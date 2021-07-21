@@ -16,15 +16,11 @@ if __name__ == "__main__":
 
     image = cv2.imread(args.filepath)
 
+    model_path = f"Models\{args.algorithm}.pb"
+    algorithm_arguments = args.algorithm.split('_x')
 
     super_resolution_algorithm = cv2.dnn_superres.DnnSuperResImpl_create()
-
-    path = f"Models\{args.algorithm}.pb"
-
-    super_resolution_algorithm.readModel(path)
-    
-    algorithm_arguments = args.algorithm.split('_x')
-    
+    super_resolution_algorithm.readModel(model_path)
     super_resolution_algorithm.setModel(algorithm_arguments[0].lower(),int(algorithm_arguments[1]))
 
     result = super_resolution_algorithm.upsample(image)
