@@ -11,7 +11,9 @@ The deep learning algorithms used are available at the following repositories:
 
 ## Dependencies
 
-This project is based on python 3.8.5, and uses opencv for image processing and if requested for interactive visualization of results
+This project is based on python 3.8.5, and uses opencv for image processing and if requested for interactive visualization of results.
+
+To install all dependencies, just run `pip install -r requirements.txt`
 
 ## Executing
 
