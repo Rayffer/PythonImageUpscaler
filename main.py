@@ -8,7 +8,7 @@ if __name__ == "__main__":
     parser.add_argument("--filepath", required=True, help="The image filepath to upscale", type=str)
     parser.add_argument("--algorithm", required=True, help="the DL algorithm to use", type=str, choices=['EDSR_x2', "EDSR_x3", "EDSR_x4", "ESPCN_x2", "ESPCN_x3", "ESPCN_x4", "FSRCNN_x2", "FSRCNN_x3", "FSRCNN_x4", "LapSRN_x2", "LapSRN_x4", "LapSRN_x8"])
     parser.add_argument("--outputfilepath", required=True, help="The path in which to save the result", type=str)
-    parser.add_argument("--showresults", required=False, help="Whether to show the image for comparison", type=bool)
+    parser.add_argument("--showresults",default=False, required=False, help="Whether to show the image for comparison", type=bool)
     try:
         args = parser.parse_args()
     except argparse.ArgumentTypeError:
@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     cv2.imwrite(args.outputfilepath, result)
 
-    if parser.showresults:
+    if args.showresults:
         # Resized image
         resized = cv2.resize(image,dsize=None,fx=int(algorithm_arguments[1]),fy=int(algorithm_arguments[1]))
         plt.figure(figsize=(12,8))
